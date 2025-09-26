@@ -21,7 +21,6 @@ import com.example.weatherapp.R
 @Preview
 @Composable
 fun CurrentWeather(){
-
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -60,4 +59,15 @@ fun CurrentWeather(){
                 text = "Wind 19 km/h NE"
             )
         }
+    //Location
+    Column (verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.Start,
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.Cyan)
+            .padding(10.dp)
+
+    ){
+        Text(text = "Weather for Halifax, N.S")
+    }
     }
