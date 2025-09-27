@@ -72,16 +72,16 @@ fun DailyForecast(){
     }
 
     //Location (for preview)
-    Column (verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start,
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.Cyan)
-            .padding(10.dp)
-
-    ){
-        Text(text = "Weather for Halifax, N.S")
-    }
+//    Column (verticalArrangement = Arrangement.Top,
+//        horizontalAlignment = Alignment.Start,
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .background(Color.Cyan)
+//            .padding(10.dp)
+//
+//    ){
+//        Text(text = "Weather for Halifax, N.S")
+//    }
 
 
         //Tomorrow
@@ -109,7 +109,10 @@ fun DailyForecast(){
             text = "Sunny"
         )
         Text(
-            text = "25°C"
+            text = "High of 25°C"
+        )
+        Text(
+            text = "Low of 18°C"
         )
         Text(
             text = "N/A"

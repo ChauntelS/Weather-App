@@ -26,7 +26,7 @@ fun CurrentWeather(){
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.LightGray)
             .padding(all = 16.dp)
 
     ) {
@@ -53,21 +53,21 @@ fun CurrentWeather(){
                 text = "14°C"
             )
             Text(
-                text = "Mostly Cloudy"
+                text = "N/A"
             )
             Text(
                 text = "Wind 19 km/h NE"
             )
         }
-    //Location (for preview)
-    Column (verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start,
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.Cyan)
-            .padding(10.dp)
-
-    ){
-        Text(text = "Weather for Halifax, N.S")
-    }
+//    Location (for preview)
+//    Column (verticalArrangement = Arrangement.Top,
+//        horizontalAlignment = Alignment.Start,
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .background(Color.Cyan)
+//            .padding(10.dp)
+//
+//    ){
+//        Text(text = "Weather for Halifax, N.S")
+//    }
     }
