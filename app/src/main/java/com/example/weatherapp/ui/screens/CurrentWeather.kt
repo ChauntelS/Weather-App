@@ -59,7 +59,7 @@ fun CurrentWeather(){
                 text = "Wind 19 km/h NE"
             )
         }
-    //Location
+    //Location (for preview)
     Column (verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start,
         modifier = Modifier

@@ -66,9 +66,12 @@ fun DailyForecast(){
         Text(
             text = "Wind 19 km/h NE"
         )
+        Text(
+            text = "Humidity 46%"
+        )
     }
 
-    //Location
+    //Location (for preview)
     Column (verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start,
         modifier = Modifier
@@ -114,6 +117,9 @@ fun DailyForecast(){
         Text(
             text = "Wind 3 km/h SW"
         )
+        Text(
+            text = "Humidity 56%"
+        )
     }
 
     //Following Day
@@ -149,6 +155,9 @@ fun DailyForecast(){
         )
         Text(
             text = "Wind 3 km/h SW"
+        )
+        Text(
+            text = "Humidity 71%"
         )
     }
 
