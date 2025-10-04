@@ -45,9 +45,7 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DisplayUI() {
-
     val navController = rememberNavController()
-
     var selectedItem by remember { mutableIntStateOf(0) }
 
     Scaffold(
@@ -55,24 +53,18 @@ fun DisplayUI() {
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor =  MaterialTheme.colorScheme.primary
+                    titleContentColor = MaterialTheme.colorScheme.primary
                 ),
-                title = {
-                    Text("Halifax")
-                }
-            ) },
+                title = { Text("Halifax, Nova Scotia") }
+            )
+        },
         bottomBar = {
             NavigationBar(
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.primary
-            )
-            {
-
-            //link to current weather
+            ) {
                 NavigationBarItem(
-                    label = {
-                        Text("Current")
-                    },
+                    label = { Text("Current") },
                     icon = {
                         Icon(
                             painter = painterResource(R.drawable.ic_action_current),
@@ -85,12 +77,8 @@ fun DisplayUI() {
                         navController.navigate("current")
                     }
                 )
-
-                //Link to daily weather
                 NavigationBarItem(
-                    label = {
-                        Text("Hello")
-                    },
+                    label = { Text("Hello") },
                     icon = {
                         Icon(
                             painter = painterResource(R.drawable.ic_action_daily),
@@ -103,25 +91,16 @@ fun DisplayUI() {
                         navController.navigate("daily")
                     }
                 )
-                { innerPadding ->
-
-                    NavHost(
-                        navController = navController,
-                        startDestination = "current",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                    {
-                        // Display Current
-                        composable(route = "current")
-                        {
-                            CurrentWeather()
-                        }
-
-                        // Display Daily
-                        composable(route = "daily")
-                        {
-                            DailyForecast()
-                        }
-                    }
-                }
             }
+        }
+    ) { innerPadding ->
+        NavHost(
+            navController = navController,
+            startDestination = "current",
+            modifier = Modifier.padding(innerPadding)
+        ) {
+            composable(route = "current") { CurrentWeather() }
+            composable(route = "daily") { DailyForecast() }
+        }
+    }
+}

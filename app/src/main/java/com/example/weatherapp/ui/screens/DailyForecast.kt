@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.example.weatherapp.R
 import kotlinx.coroutines.sync.Mutex
 
-@Preview
+
 @Composable
 fun DailyForecast(){
 
@@ -32,7 +32,7 @@ fun DailyForecast(){
         modifier = Modifier
             .fillMaxSize()
             .background(Color.LightGray)
-            .padding(80.dp)
+            .padding(10.dp)
 
     ) {
         Text(
@@ -132,7 +132,7 @@ fun DailyForecast(){
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .padding(80.dp)
+            .padding(10.dp)
     ) {
         Text(
             text = "Following Day"
