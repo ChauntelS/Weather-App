@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.weatherapp.R
 
-@Preview
+
 @Composable
 fun CurrentWeather(){
     Column(
@@ -59,15 +59,5 @@ fun CurrentWeather(){
                 text = "Wind 19 km/h NE"
             )
         }
-//    Location (for preview)
-//    Column (verticalArrangement = Arrangement.Top,
-//        horizontalAlignment = Alignment.Start,
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .background(Color.Cyan)
-//            .padding(10.dp)
-//
-//    ){
-//        Text(text = "Weather for Halifax, N.S")
-//    }
+
     }
