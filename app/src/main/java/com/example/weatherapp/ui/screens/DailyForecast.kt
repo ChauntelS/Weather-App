@@ -71,18 +71,6 @@ fun DailyForecast(){
         )
     }
 
-    //Location (for preview)
-//    Column (verticalArrangement = Arrangement.Top,
-//        horizontalAlignment = Alignment.Start,
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .background(Color.Cyan)
-//            .padding(10.dp)
-//
-//    ){
-//        Text(text = "Weather for Halifax, N.S")
-//    }
-
 
         //Tomorrow
     Column(
@@ -91,14 +79,17 @@ fun DailyForecast(){
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
+
     ) {
         Text(
             text = "Tomorrow's Forecast"
+
         )
         Row(
             horizontalArrangement = Arrangement.SpaceAround,
             modifier = Modifier
                 .fillMaxWidth()
+
         ) {
             Image(
                 painter = painterResource(id = R.drawable.sun),
