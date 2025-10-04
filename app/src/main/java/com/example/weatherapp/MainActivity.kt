@@ -78,7 +78,7 @@ fun DisplayUI() {
                     }
                 )
                 NavigationBarItem(
-                    label = { Text("Hello") },
+                    label = { Text("Daily") },
                     icon = {
                         Icon(
                             painter = painterResource(R.drawable.ic_action_daily),
