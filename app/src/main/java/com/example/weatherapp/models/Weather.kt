@@ -11,6 +11,7 @@ data class Weather(
 
 data class Current(
     val weather: String,
+    val image: Int,
     val condition: String,
     val temperature: Double,
     val precipitationType: String,
@@ -21,7 +22,7 @@ data class Current(
 
 data class Forecast(
     val date: String,
-    val image: Image,
+    val image: Int,
     val temperatureHigh: Double,
     val temperatureLow: Double,
     val condition: String,
@@ -32,3 +33,4 @@ data class Forecast(
     val windSpeed: Double,
     val humidity: Double
     )
+

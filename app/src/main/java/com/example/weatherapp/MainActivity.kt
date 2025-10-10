@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -31,77 +32,81 @@ import com.example.weatherapp.ui.screens.DailyForecast
 import com.example.weatherapp.ui.theme.WeatherAppTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val mainViewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             WeatherAppTheme {
-                DisplayUI()
+                DisplayUI(mainViewModel)
             }
         }
     }
-}
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun DisplayUI(mainViewModel: MainViewModel) {
+        val navController = rememberNavController()
+        var selectedItem by remember { mutableIntStateOf(0) }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun DisplayUI() {
-    val navController = rememberNavController()
-    var selectedItem by remember { mutableIntStateOf(0) }
-
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                colors = TopAppBarDefaults.topAppBarColors(
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        titleContentColor = MaterialTheme.colorScheme.primary
+                    ),
+                    title = { Text("Halifax, Nova Scotia") }
+                )
+            },
+            bottomBar = {
+                NavigationBar(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary
-                ),
-                title = { Text("Halifax, Nova Scotia") }
-            )
-        },
-        bottomBar = {
-            NavigationBar(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                contentColor = MaterialTheme.colorScheme.primary
-            ) {
-                NavigationBarItem(
-                    label = { Text("Current") },
-                    icon = {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_action_current),
-                            contentDescription = "Current Forecast"
-                        )
-                    },
-                    selected = selectedItem == 0,
-                    onClick = {
-                        selectedItem = 0
-                        navController.navigate("current")
-                    }
-                )
-                NavigationBarItem(
-                    label = { Text("Daily") },
-                    icon = {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_action_daily),
-                            contentDescription = "Daily"
-                        )
-                    },
-                    selected = selectedItem == 1,
-                    onClick = {
-                        selectedItem = 1
-                        navController.navigate("daily")
-                    }
-                )
+                    contentColor = MaterialTheme.colorScheme.primary
+                ) {
+                    NavigationBarItem(
+                        label = { Text("Current") },
+                        icon = {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_action_current),
+                                contentDescription = "Current Forecast"
+                            )
+                        },
+                        selected = selectedItem == 0,
+                        onClick = {
+                            selectedItem = 0
+                            navController.navigate("current")
+                        }
+                    )
+                    NavigationBarItem(
+                        label = { Text("Daily") },
+                        icon = {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_action_daily),
+                                contentDescription = "Daily"
+                            )
+                        },
+                        selected = selectedItem == 1,
+                        onClick = {
+                            selectedItem = 1
+                            navController.navigate("daily")
+                        }
+                    )
+                }
             }
-        }
-    ) { innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = "current",
-            modifier = Modifier.padding(innerPadding)
-        ) {
-            composable(route = "current") { CurrentWeather() }
-            composable(route = "daily") { DailyForecast() }
+        ) { innerPadding ->
+            NavHost(
+                navController = navController,
+                startDestination = "current",
+                modifier = Modifier.padding(innerPadding)
+            ) {
+                composable(route = "current") { CurrentWeather(mainViewModel) }
+                composable(route = "daily") { DailyForecast() }
+            }
         }
     }
 }
+
+
 
