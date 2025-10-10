@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.example.weatherapp.R
 
 
+@Preview
 @Composable
 fun CurrentWeather(){
     Column(
@@ -30,6 +31,7 @@ fun CurrentWeather(){
             .padding(all = 16.dp)
 
     ) {
+        Text("Current Weather")
 
         Row(
             horizontalArrangement = Arrangement.SpaceAround,
