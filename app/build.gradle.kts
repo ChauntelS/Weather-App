@@ -59,4 +59,7 @@ dependencies {
 
     //Navigation
     implementation(libs.androidx.navigation.compose)
+
+    //Coil Images
+    implementation("io.coil-kt:coil-compose:2.7.0")
 }

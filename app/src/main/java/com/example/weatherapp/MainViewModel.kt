@@ -18,11 +18,11 @@ class MainViewModel : ViewModel() {
             weather = "Partly Cloudy",
             image = R.drawable.part_cloudy,
             condition = "Overcast",
-            temperature = 14.0,
-            precipitationType = "N/A",
-            precipitationAmount = 0.0,
-            windDirection = "NE",
-            windSpeed = 19.0
+            temperature = "Temperature: 14°C",
+            precipitationType = "Precipitation: N/A",
+            precipitationAmount = "Amount: N/A",
+            windDirection = "Wind Direction: NE",
+            windSpeed = "Wind Speed: 19 km/h"
 
         )
 

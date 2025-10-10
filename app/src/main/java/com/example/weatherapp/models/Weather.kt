@@ -13,11 +13,11 @@ data class Current(
     val weather: String,
     val image: Int,
     val condition: String,
-    val temperature: Double,
+    val temperature: String,
     val precipitationType: String,
-    val precipitationAmount: Double,
+    val precipitationAmount: String,
     val windDirection: String,
-    val windSpeed: Double
+    val windSpeed: String
 )
 
 data class Forecast(

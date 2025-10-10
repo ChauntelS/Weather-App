@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,7 +26,7 @@ import com.example.weatherapp.R
 @Composable
 fun CurrentWeather(mainViewModel: MainViewModel){
 
-    val current = mainViewModel.current.collectAsState()
+    val current by mainViewModel.current.collectAsState()
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -35,7 +37,8 @@ fun CurrentWeather(mainViewModel: MainViewModel){
             .padding(all = 16.dp)
 
     ) {
-        Text("Current Weather")
+        //title of weather
+        Text(text = current?.weather.toString(), style = MaterialTheme.typography.titleLarge)
 
         Row(
             horizontalArrangement = Arrangement.SpaceAround,
@@ -53,16 +56,22 @@ fun CurrentWeather(mainViewModel: MainViewModel){
             modifier = Modifier
                 .fillMaxWidth()
         ) {
-            Text(text = "Partly Cloudy")
+
         }
             Text(
-                text = "14°C"
+                text = current?.temperature.toString(), style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = "N/A"
+                text = current?.precipitationType.toString(), style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = "Wind 19 km/h NE"
+                text = current?.precipitationAmount.toString(), style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = current?.windDirection.toString(), style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = current?.windSpeed.toString(), style = MaterialTheme.typography.titleMedium
             )
         }
 
