@@ -22,15 +22,15 @@ data class Current(
 
 data class Forecast(
     val date: String,
-    val image: Int,
-    val temperatureHigh: Double,
-    val temperatureLow: Double,
     val condition: String,
+    val image: Int,
+    val temperatureHigh: String,
+    val temperatureLow: String,
     val precipitationType: String,
-    val precipitationAmount: Double,
-    val precipitationProbability: Double,
+    val precipitationAmount: String,
+    val precipitationProbability: String,
     val windDirection: String,
-    val windSpeed: Double,
-    val humidity: Double
+    val windSpeed: String,
+    val humidity: String
     )
 

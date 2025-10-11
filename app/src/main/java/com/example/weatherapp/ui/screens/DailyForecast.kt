@@ -8,157 +8,159 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.weatherapp.MainViewModel
 import com.example.weatherapp.R
 
-
-
-@Preview
 @Composable
-fun DailyForecast(){
+fun DailyForecast(mainViewModel: MainViewModel) {
 
+    val weather by mainViewModel.weather.collectAsState()
 
-    Column(
+    for(item in weather?.forecast!!) {
 
-        //Today
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.LightGray)
-            .padding(10.dp)
+        Column(
 
-    ) {
-        Text(
-            text = "Today's Forecast"
-        )
-        Row(
-            horizontalArrangement = Arrangement.SpaceAround,
+            //Today
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
+                .background(Color.LightGray)
+                .padding(10.dp)
+
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.part_cloudy),
-                contentDescription = "Partly Cloudy Icon*"
+            Text(
+                text = item.date,style = MaterialTheme.typography.titleLarge
             )
+            Row(
+                horizontalArrangement = Arrangement.SpaceAround,
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.part_cloudy),
+                    contentDescription = "Partly Cloudy Icon*"
+                )
 
-        }
+            }
 
-        Row(
-            horizontalArrangement = Arrangement.SpaceAround,
-            modifier = Modifier
-                .fillMaxWidth()
-        ) {
-            Text(text = "Partly Cloudy")
+            Row(
+                horizontalArrangement = Arrangement.SpaceAround,
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+            }
+            Text(
+                text = item.temperatureHigh,style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = item.temperatureLow,style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = item.precipitationType,style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = item.windDirection,style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = item.humidity,style = MaterialTheme.typography.titleMedium
+            )
         }
-        Text(
-            text = "14°C"
-        )
-        Text(
-            text = "N/A"
-        )
-        Text(
-            text = "Wind 19 km/h NE"
-        )
-        Text(
-            text = "Humidity 46%"
-        )
-    }
 
 
         //Tomorrow
-    Column(
-        //Today
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-
-    ) {
-        Text(
-            text = "Tomorrow's Forecast"
-
-        )
-        Row(
-            horizontalArrangement = Arrangement.SpaceAround,
+        Column(
+            //Today
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
 
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.sun),
-                contentDescription = "Sunny Icon*"
+            Text(
+                text = item.date,style = MaterialTheme.typography.titleLarge
+
+            )
+            Row(
+                horizontalArrangement = Arrangement.SpaceAround,
+                modifier = Modifier
+                    .fillMaxWidth()
+
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.sun),
+                    contentDescription = "Sunny Icon*"
+                )
+            }
+            Text(
+                text = item.temperatureHigh,style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = item.temperatureLow,style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = item.precipitationType,style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = item.windDirection,style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = item.humidity,style = MaterialTheme.typography.titleMedium
             )
         }
-        Text(
-            text = "Sunny"
-        )
-        Text(
-            text = "High of 25°C"
-        )
-        Text(
-            text = "Low of 18°C"
-        )
-        Text(
-            text = "N/A"
-        )
-        Text(
-            text = "Wind 3 km/h SW"
-        )
-        Text(
-            text = "Humidity 56%"
-        )
-    }
 
-    //Following Day
-    Column(
-        //Today
-        verticalArrangement = Arrangement.Bottom,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(10.dp)
-    ) {
-        Text(
-            text = "Following Day"
-        )
-        Row(
-            horizontalArrangement = Arrangement.SpaceAround,
+        //Following Day
+        Column(
+            //Today
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
+                .padding(10.dp)
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.storm),
-                contentDescription = "Storm Icon*"
+            Text(
+                text = item.date,style = MaterialTheme.typography.titleLarge
+            )
+            Row(
+                horizontalArrangement = Arrangement.SpaceAround,
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.storm),
+                    contentDescription = "Storm Icon*"
+                )
+            }
+            Text(
+                text = item.temperatureHigh,style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = item.temperatureLow,style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = item.precipitationType,style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = item.windDirection,style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = item.humidity,style = MaterialTheme.typography.titleMedium
             )
         }
-        Text(
-            text = "Thunder & Lightning"
-        )
-        Text(
-            text = "18°C"
-        )
-        Text(
-            text = "60-75 mm of rainfall"
-        )
-        Text(
-            text = "Wind 3 km/h SW"
-        )
-        Text(
-            text = "Humidity 71%"
-        )
-    }
 
 
     }
-
+}
 
 
 

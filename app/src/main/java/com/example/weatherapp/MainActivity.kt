@@ -102,7 +102,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.padding(innerPadding)
             ) {
                 composable(route = "current") { CurrentWeather(mainViewModel) }
-                composable(route = "daily") { DailyForecast() }
+                composable(route = "daily") { DailyForecast(mainViewModel) }
             }
         }
     }

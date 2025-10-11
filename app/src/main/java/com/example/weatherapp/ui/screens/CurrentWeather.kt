@@ -26,7 +26,9 @@ import com.example.weatherapp.R
 @Composable
 fun CurrentWeather(mainViewModel: MainViewModel){
 
-    val current by mainViewModel.current.collectAsState()
+    val weather by mainViewModel.weather.collectAsState()
+
+    val current = weather?.current
 
     Column(
         verticalArrangement = Arrangement.Center,
