@@ -9,7 +9,7 @@ import java.util.concurrent.locks.Condition
 data class Weather(
     val location: Location,
     val current: Current,
-    val forecast: List<Forecast>
+    val forecast: Forecast
 )
 
 data class Location(
