@@ -48,7 +48,7 @@ fun CurrentWeather(mainViewModel: MainViewModel) {
         )
 
         Image(
-            painter = rememberAsyncImagePainter("https:${current?.condition.icon}"),
+            painter = rememberAsyncImagePainter("https://${current?.condition?.icon}"),
             contentScale = "Weather Icon",
             modifier = Modifier
                 .size(120.dp)

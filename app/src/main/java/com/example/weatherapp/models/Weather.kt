@@ -49,7 +49,7 @@ data class Current(
 )
 
 data class Forecast(
-    @SerializedName("forecastday") val forecastDays: List<ForecastDay>
+    @SerializedName("forecastDay") val forecastDays: List<ForecastDay>
 
     )
 
