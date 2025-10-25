@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,13 +19,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
 import com.example.weatherapp.MainViewModel
 import com.example.weatherapp.R
 
 
 
 @Composable
-fun CurrentWeather(mainViewModel: MainViewModel){
+fun CurrentWeather(mainViewModel: MainViewModel) {
 
     val weather by mainViewModel.weather.collectAsState()
 
@@ -40,41 +42,30 @@ fun CurrentWeather(mainViewModel: MainViewModel){
 
     ) {
         //title of weather
-        Text(text = current?.weather.toString(), style = MaterialTheme.typography.titleLarge)
+        Text(
+            text = current?.condition.toString(),
+            style = MaterialTheme.typography.titleLarge
+        )
 
-        Row(
-            horizontalArrangement = Arrangement.SpaceAround,
+        Image(
+            painter = rememberAsyncImagePainter("https:${current?.condition.icon}"),
+            contentScale = "Weather Icon",
             modifier = Modifier
-                .fillMaxWidth()
-        ) {
-            Image(painter = painterResource(id = R.drawable.part_cloudy),
-                contentDescription = "Partly Cloudy Icon*"
-            )
-        }
+                .size(120.dp)
+        )
+        Text(
+            text = "${current?.temp_c} °C",
+            style = MaterialTheme.typography.titleMedium
+        )
+        Text(
+            text = "Precipitation: ${current?.precip_mm} mm",
+            style = MaterialTheme.typography.bodyMedium
+        )
+        Text(
+            text = "Wind: ${current?.wind_kph} kph ${current?.wind_dir}",
+            style = MaterialTheme.typography.bodyMedium
+        )
 
-        //condition
-        Row(
-            horizontalArrangement = Arrangement.SpaceAround,
-            modifier = Modifier
-                .fillMaxWidth()
-        ) {
-
-        }
-            Text(
-                text = current?.temperature.toString(), style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = current?.precipitationType.toString(), style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = current?.precipitationAmount.toString(), style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = current?.windDirection.toString(), style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = current?.windSpeed.toString(), style = MaterialTheme.typography.titleMedium
-            )
-        }
 
     }
+}

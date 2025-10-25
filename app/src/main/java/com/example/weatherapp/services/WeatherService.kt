@@ -2,6 +2,7 @@ package com.example.weatherapp.services
 
 import com.example.weatherapp.models.Current
 import com.example.weatherapp.models.Forecast
+import com.example.weatherapp.models.Weather
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

@@ -27,15 +27,13 @@ class MainViewModel : ViewModel() {
 
     val weatherService: WeatherService = retrofit.create(WeatherService::class.java)
 
+    private val apiKey = "3e38794920a945d8a49115240251710"
 
-    fun fetchWeather(location: String = "Halifax, Canada") {
+    fun fetchWeather(city: String = "Halifax") {
         viewModelScope.launch {
             try {
-                val response = weatherService.getWeather(
-                    apiKey = "3e38794920a945d8a49115240251710",
-                    location = location,
-                    days = 14
-                )
+                val response =
+                    weatherService.getWeather(apiKey, city, days = 14, aqi = "no", alerts = "no")
                 _weather.value = response
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -44,63 +42,5 @@ class MainViewModel : ViewModel() {
     }
 }
 
-//    init {
-//
-//        val weather = Weather(
-//            current = Current(
-//                weather = "Partly Cloudy",
-//                image = R.drawable.part_cloudy,
-//                condition = "Overcast",
-//                temperature = "Temperature: 14°C",
-//                precipitationType = "Precipitation: N/A",
-//                precipitationAmount = "Amount: N/A",
-//                windDirection = "Wind Direction: NE",
-//                windSpeed = "Wind Speed: 19 km/h"
-//
-//            ),
-//            forecast = listOf(
-//                Forecast(
-//                    date = "Today",
-//                    condition = "Partly Cloudy",
-//                    image = R.drawable.part_cloudy,
-//                    temperatureHigh = "14°C",
-//                    temperatureLow = "8°C",
-//                    precipitationType = "Precipitation: N/A",
-//                    precipitationAmount = "Amount: N/A",
-//                    precipitationProbability = "0%",
-//                    windDirection = "Wind Direction:NE",
-//                    windSpeed = "Wind Speed:19 km/h",
-//                    humidity = "Humidity: 46%"
-//                ),
-//
-//                Forecast(
-//                    date = "Tomorrow",
-//                    image = R.drawable.storm,
-//                    temperatureHigh = "12°C",
-//                    temperatureLow = "6°C",
-//                    condition = "Rain",
-//                    precipitationType = "Precipitation: Rain",
-//                    precipitationAmount = "Amount: 5mm",
-//                    precipitationProbability = "80%",
-//                    windDirection = "Wind Direction:E",
-//                    windSpeed = "Wind Speed:25 km/h",
-//                    humidity = "Humidity: 70%"
-//                ),
-//
-//                Forecast(
-//                    date = "Following Days",
-//                    image = R.drawable.sun,
-//                    temperatureHigh = "25°C",
-//                    temperatureLow = "15°C",
-//                    condition = "Sunny",
-//                    precipitationType = "Precipitation: N/A",
-//                    precipitationAmount = "Amount: N/A",
-//                    precipitationProbability = "0%",
-//                    windDirection = "Wind Direction:SW",
-//                    windSpeed = "Wind Speed:10 km/h",
-//                    humidity = "Humidity: 30%"
-//                )
-//            )
-//        )
 
 

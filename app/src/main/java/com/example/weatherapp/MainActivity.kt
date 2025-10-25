@@ -38,6 +38,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        mainViewModel.fetchWeather("Halifax")
         setContent {
             WeatherAppTheme {
                 DisplayUI(mainViewModel)
@@ -49,6 +50,8 @@ class MainActivity : ComponentActivity() {
     fun DisplayUI(mainViewModel: MainViewModel) {
         val navController = rememberNavController()
         var selectedItem by remember { mutableIntStateOf(0) }
+
+        mainViewModel.fetchWeather("Halifax")
 
         Scaffold(
             topBar = {
