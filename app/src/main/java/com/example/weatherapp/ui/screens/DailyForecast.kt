@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -19,12 +18,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.weatherapp.MainViewModel
-import com.example.weatherapp.R
+
 
 @Composable
 fun DailyForecast(mainViewModel: MainViewModel) {
@@ -43,8 +41,7 @@ fun DailyForecast(mainViewModel: MainViewModel) {
                 .background(Color.LightGray)
 
         ) {
-            items(forecastDays){
-                forecastDay ->
+            items(forecastDays) { forecastDay ->
                 val day = forecastDay.day
                 val date = forecastDay.date
 
@@ -67,23 +64,23 @@ fun DailyForecast(mainViewModel: MainViewModel) {
                             .size(80.dp)
                     )
                     Text(
-                        text = "High: ${day.maxtemp_c} °C" +
-                                "Low: ${day.mintemp_c} °C",
+                        text = "High: ${day.maxTemp} °C" +
+                                "Low: ${day.minTemp} °C",
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
-                        text = "${day.condition.toString()}."+
-                                "Chance of Rain: ${day.daily_chance_of_rain}%" +
-                                " Precipitation: ${day.totalprecip_mm} mm" +
-                                " Wind: ${day.maxwind_kph} kph." +
-                                " Humidity: ${day.avghumidity}%" ,
-                                style = MaterialTheme.typography.titleMedium
+                        text = "${day.condition.text}. " +
+                                "Chance of Rain: ${day.rainChance}%" +
+                                " Precipitation: ${day.precipitationAmount} mm" +
+                                " Wind: ${day.maxWind} kph." +
+                                " Humidity: ${day.avgHumidity}%",
+                        style = MaterialTheme.typography.titleMedium
                     )
 
                 }
             }
         }
-
+    }
 }
 
 

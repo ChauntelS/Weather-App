@@ -2,10 +2,6 @@ package com.example.weatherapp.models
 
 import com.google.gson.annotations.SerializedName
 
-import android.health.connect.datatypes.units.Temperature
-import android.media.Image
-import java.util.concurrent.locks.Condition
-
 data class Weather(
     val location: Location,
     val current: Current,
@@ -23,63 +19,44 @@ data class Location(
     val localtime: String
 )
 data class Current(
-    val last_updated_epoch: Int,
-    val last_updated: String,
-    val temp_c: Double,
-    val is_day: Int,
-    val condition: Condition,
-    val wind_kph: Double,
-    val wind_degree: Int,
-    val wind_dir: String,
-    val pressure_mb: Double,
-    val precip_mm: Double,
-    val humidity: Int,
-    val cloud: Int,
-    val feelslike_c: Double,
-    val windchill_c: Double,
-    val heatindex_c: Double,
-    val dewpoint_c: Double,
-    val vis_km: Double,
-    val uv: Double,
-    val gust_kph: Double,
-    val short_rad: Double,
-    val dif_rad: Double,
-    val dni: Double,
-    val gti: Double
+    @SerializedName("temp_c") val temperature: Float,
+    @SerializedName("condition") val condition: Condition,
+    @SerializedName ("wind_kph") val windSpeed: Float,
+    @SerializedName("wind_dir") val windDirection: String,
+    @SerializedName ("precip_mm") val precipitationAmount: Double,
 )
-
-data class Forecast(
-    @SerializedName("forecastDay") val forecastDays: List<ForecastDay>
-
-    )
 
 data class Condition(
     val text: String,
     val icon: String,
-    val code: Int
 )
 
+data class Forecast(
+    @SerializedName("forecastday") val forecastDays: List<ForecastDay>
+
+    )
+
 data class ForecastDay(
-    val date: String,
-    val date_epoch: Int,
-    val day: Day
+    @SerializedName("date") val date: String,
+    @SerializedName("day") val day: Day
 )
 
 data class Day(
-    val maxtemp_c: Double,
-    val mintemp_c: Double,
-    val avgtemp_c: Double,
-    val avgtemp_f: Double,
-    val maxwind_kph: Double,
-    val totalprecip_mm: Double,
-    val totalsnow_cm: Double,
-    val avgvis_km: Double,
-    val avghumidity: Double,
-    val daily_will_it_rain: Int,
-    val daily_chance_of_rain: Int,
-    val daily_will_it_snow: Int,
-    val daily_chance_of_snow: Int,
-    val condition: Condition,
-    val uv: Double
+    @SerializedName("maxtemp_c") val maxTemp: Float,
+    @SerializedName ( "mintemp_c") val minTemp: Float,
+//    val avgtemp_c: Double,
+//    val avgtemp_f: Double,
+    @SerializedName("maxwind_kph") val maxWind: Float,
+    @SerializedName ("totalprecip_mm") val precipitationAmount: Float,
+    @SerializedName ("daily_chance_of_rain") val rainChance: Int,
+//    val totalsnow_cm: Double,
+//    val avgvis_km: Double,
+    @SerializedName("avghumidity") val avgHumidity: Float,
+//    val daily_will_it_rain: Int,
+//    val daily_chance_of_rain: Int,
+//    val daily_will_it_snow: Int,
+//    val daily_chance_of_snow: Int,
+    val condition: Condition
+//    val uv: Double
 
 )

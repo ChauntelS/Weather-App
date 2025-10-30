@@ -21,7 +21,7 @@ class MainViewModel : ViewModel() {
     val weather = _weather.asStateFlow()
 
     val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://api.weatherapi.com")
+        .baseUrl("https://api.weatherapi.com/v1/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -33,7 +33,7 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response =
-                    weatherService.getWeather(apiKey, city, days = 14, aqi = "no", alerts = "no")
+                    weatherService.getWeather(apiKey, city, 3, "no", "no")
                 _weather.value = response
             } catch (e: Exception) {
                 e.printStackTrace()
