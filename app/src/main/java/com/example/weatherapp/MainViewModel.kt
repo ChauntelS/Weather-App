@@ -4,9 +4,6 @@ import com.example.weatherapp.services.WeatherService
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.weatherapp.models.Current
-import com.example.weatherapp.models.Forecast
-import com.example.weatherapp.models.Location
 import com.example.weatherapp.models.Weather
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -42,6 +39,8 @@ class MainViewModel : ViewModel() {
             }
         }
     }
+
+
 }
 
 

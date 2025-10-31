@@ -24,6 +24,7 @@ data class Current(
     @SerializedName ("wind_kph") val windSpeed: Float,
     @SerializedName("wind_dir") val windDirection: String,
     @SerializedName ("precip_mm") val precipitationAmount: Double,
+    @SerializedName("feelslike_c") val feelsLike: Float
 )
 
 data class Condition(
@@ -38,7 +39,8 @@ data class Forecast(
 
 data class ForecastDay(
     @SerializedName("date") val date: String,
-    @SerializedName("day") val day: Day
+    @SerializedName("day") val day: Day,
+    @SerializedName("astro") val astro: Astro
 )
 
 data class Day(
@@ -59,4 +61,13 @@ data class Day(
     val condition: Condition
 //    val uv: Double
 
+)
+
+data class Astro(
+    val sunrise: String,
+    val sunset: String,
+    val moonrise: String,
+    val moonset: String,
+    val moon_phase: String,
+    val moon_illumination: Int
 )
