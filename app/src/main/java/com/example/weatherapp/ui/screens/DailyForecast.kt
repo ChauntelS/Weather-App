@@ -40,6 +40,7 @@ fun DailyForecast(mainViewModel: MainViewModel) {
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.LightGray)
+                .padding(16.dp)
 
         ) {
             items(forecastDays) { forecastDay ->
@@ -47,20 +48,21 @@ fun DailyForecast(mainViewModel: MainViewModel) {
                 val date = forecastDay.date
 
                 Column(
-                    verticalArrangement = Arrangement.Center,
+                    verticalArrangement = Arrangement.SpaceAround,
                     horizontalAlignment = Alignment.CenterHorizontally,
+
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxSize()
                         .padding(16.dp)
                 ) {
                     Text(
                         text = date,
-                        style = MaterialTheme.typography.titleLarge,
+                        style = MaterialTheme.typography.titleMedium,
 
                     )
                     Text(
                         text = day.condition.text,
-                        style = MaterialTheme.typography.titleMedium,
+                        style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                     )
                     Image(
@@ -81,10 +83,9 @@ fun DailyForecast(mainViewModel: MainViewModel) {
                                 " Wind: ${day.maxWind} kph." +
                                 " Humidity: ${day.avgHumidity}%",
                         style = MaterialTheme.typography.titleMedium,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .absolutePadding()
-                            .padding(top = 16.dp)
+//                        modifier = Modifier
+////                            .fillMaxWidth()
+//                            .padding(top = 16.dp)
 
                     )
 

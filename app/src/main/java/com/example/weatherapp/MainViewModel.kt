@@ -29,11 +29,13 @@ class MainViewModel : ViewModel() {
 
     private val apiKey = "3e38794920a945d8a49115240251710"
 
-    fun fetchWeather(city: String = "Halifax") {
+
+
+    fun fetchWeather(lat: Double, lon: Double) {
         viewModelScope.launch {
             try {
                 val response =
-                    weatherService.getWeather(apiKey, city, 3, "no", "no")
+                    weatherService.getWeather(apiKey, "$lat,$lon", 3, "no", "no")
                 _weather.value = response
             } catch (e: Exception) {
                 e.printStackTrace()
