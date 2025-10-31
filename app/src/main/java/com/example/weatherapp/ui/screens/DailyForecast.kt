@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -55,6 +56,11 @@ fun DailyForecast(mainViewModel: MainViewModel) {
                     Text(
                         text = date,
                         style = MaterialTheme.typography.titleLarge,
+
+                    )
+                    Text(
+                        text = day.condition.text,
+                        style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold
                     )
                     Image(
@@ -74,7 +80,12 @@ fun DailyForecast(mainViewModel: MainViewModel) {
                                 " Precipitation: ${day.precipitationAmount} mm" +
                                 " Wind: ${day.maxWind} kph." +
                                 " Humidity: ${day.avgHumidity}%",
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .absolutePadding()
+                            .padding(top = 16.dp)
+
                     )
 
                 }
