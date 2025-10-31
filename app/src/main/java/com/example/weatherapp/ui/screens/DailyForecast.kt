@@ -18,6 +18,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
+import androidx.compose.material3.DividerDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -120,7 +122,11 @@ fun DailyForecast(mainViewModel: MainViewModel) {
                         textAlign = TextAlign.Center
                     )
                     //Astro details
-                    Divider(Modifier.padding(vertical = 4.dp))
+                    HorizontalDivider(
+                        Modifier.padding(vertical = 4.dp),
+                        DividerDefaults.Thickness,
+                        DividerDefaults.color
+                    )
                     Text(
                         text = "🌅 Sunrise: ${forecastDay.astro.sunrise} | 🌇 Sunset: ${forecastDay.astro.sunset}",
                         style = MaterialTheme.typography.bodyMedium,
