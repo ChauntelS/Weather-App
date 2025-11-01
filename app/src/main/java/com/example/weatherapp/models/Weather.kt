@@ -46,20 +46,11 @@ data class ForecastDay(
 data class Day(
     @SerializedName("maxtemp_c") val maxTemp: Float,
     @SerializedName ( "mintemp_c") val minTemp: Float,
-//    val avgtemp_c: Double,
-//    val avgtemp_f: Double,
     @SerializedName("maxwind_kph") val maxWind: Float,
     @SerializedName ("totalprecip_mm") val precipitationAmount: Float,
     @SerializedName ("daily_chance_of_rain") val rainChance: Int,
-//    val totalsnow_cm: Double,
-//    val avgvis_km: Double,
     @SerializedName("avghumidity") val avgHumidity: Float,
-//    val daily_will_it_rain: Int,
-//    val daily_chance_of_rain: Int,
-//    val daily_will_it_snow: Int,
-//    val daily_chance_of_snow: Int,
     val condition: Condition
-//    val uv: Double
 
 )
 

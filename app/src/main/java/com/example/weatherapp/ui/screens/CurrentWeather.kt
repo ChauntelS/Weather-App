@@ -28,27 +28,32 @@ fun getWeatherGradient(condition: String): Brush {
     return when {
         "sun" in lower || "sunny" in lower || "clear" in lower -> {
             Brush.verticalGradient(
-                colors = listOf(Color(0xFFFFC107), Color(0xFFFFEB3B))   // orange to yellow
+                colors = listOf(Color(0xFFFFC107), Color(0xFFFF6E40))   // orange to yellow
             )
         }
         "rain" in lower || "drizzle" in lower || "shower" in lower -> {
             Brush.verticalGradient(
-                colors = listOf(Color(0xFF90A4AE), Color(0xFFB3E5FC))   // gray to light blue
+                colors = listOf(Color(0xFF046191), Color(0xFF1EA0FA))   // gray to light blue
             )
         }
         "cloud" in lower || "overcast" in lower -> {
             Brush.verticalGradient(
-                colors = listOf(Color(0xFFE0E0E0), Color(0xFFFFFFFF))   // light gray to white
+                colors = listOf(Color(0xFF3A769A), Color(0xFF969090))   // light gray to white
             )
         }
         "snow" in lower || "ice" in lower -> {
             Brush.verticalGradient(
-                colors = listOf(Color(0xFFB3E5FC), Color(0xFFE1F5FE))   //light blue to white
+                colors = listOf(Color(0xFF66D4FF), Color(0xFFE1F5FE))   //light blue to white
             )
         }
         "fog" in lower || "mist" in lower -> {
             Brush.verticalGradient(
-                colors = listOf(Color(0xFFB0BEC5), Color(0xFFECEFF1))   //grayish blue to very light gray
+                colors = listOf(Color(0xFF7B7F81), Color(0xFFECEFF1))   //grayish blue to very light gray
+            )
+        }
+        "night" in lower -> {
+            Brush.verticalGradient(
+                colors = listOf(Color(0xFF0D47A1), Color(0xFF1976D2))   // dark blue to medium blue
             )
         }
         else -> {
@@ -69,6 +74,8 @@ fun CurrentWeather(mainViewModel: MainViewModel) {
     val current = weather?.current
 
     if (current != null) {
+
+
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -110,8 +117,7 @@ fun CurrentWeather(mainViewModel: MainViewModel) {
                 textAlign = TextAlign.Center
             )
             Text(
-                text = "Wind Speed: ${current.windSpeed}kph"+
-                        "\nWind Direction: ${current.windDirection}",
+                text = "💧Precip: ${current.precipitationAmount} mm  |  💨 Wind: ${current.windSpeed} kph ${current.windDirection}",
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center
             )
